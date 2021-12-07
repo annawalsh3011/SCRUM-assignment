@@ -1,5 +1,4 @@
 from Item import Item
-
 choice = 0
 
 print('Welcome')
@@ -17,8 +16,9 @@ while choice != '3':
         name = input('Enter item name: ')
         type = input('Enter the number of the item type from: 1 = luxury, 2 = essential or 3 = gift ')
         expiration_date = input('Enter expiration date of product in format of dd/mm/yyyy (10/12/2018): ')
+        amount = input('Enter the amount of stock you want to add')
         if name and type and expiration_date != '':
-            Item.add_item( name, type, expiration_date) 
+            Item.add_item( name, type, expiration_date, amount) 
         else:
             print('item not added as not all fields were incomplete')
 

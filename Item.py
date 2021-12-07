@@ -11,7 +11,7 @@ class Item():
         self.quantity = 0
 
     def set_id(self, i):
-        self.id  = id
+        self.id  = i
 
     def get_id(self):
         return self.id
@@ -44,20 +44,23 @@ class Item():
         return 'Id: '+ str(self.id) + ' Name: ' + str(self.name) + ' Type: ' +str(self.type)  + ' Expiration Date: ' +str(self.expiration_date)  + ' Quantity: ' +str(self.quantity) 
 
 
-    def add_item( name, type, expiration_date ):
+    def add_item( name, type, expiration_date, amount):
         global stock_items
 
-        for a in range(len(stock_items)):
-            if stock_items[a].get_name() == name:
-                q= stock_items[a].get_quantity()
-                q=  str(q)
-                print(q)
+        #for a in range(len(stock_items)):
+            #if stock_items[a].get_name() == name:
+                #q= stock_items[a].get_quantity()
+                #q=  str(q)
+                #print(q)
                 #stock_items[a].set_quantity(q)
-                
-    ##################################################### adding to an item that has already been there
 
-    ##########showing the id in the list
-        # Create a Customer object
+        for a in stock_items:
+            if a.get_name() == name:
+                val = int(a.quantity) + int(amount)
+                a.set_quantity(val)
+                return stock_items
+
+
         i = Item()
 
         #creating random id
@@ -81,7 +84,7 @@ class Item():
             i.set_type('Luxury')
         
         i.set_expiration_date(expiration_date)
-        i.set_quantity('1')
+        i.set_quantity(amount)
         # Add it to the stock list
         stock_items.append(i)
 
@@ -95,5 +98,3 @@ class Item():
         for i in range(len(stock_items)):
             if stock_items[i-1].get_name() == name:
                 stock_items.remove(stock_items[i-1])
-
-        
